@@ -985,6 +985,9 @@ MonoBehaviour:
   gravityValue: -9.81
   playerHead: {fileID: 2271516315306191277}
   ovrCameraRig: {fileID: 3034854545002453706}
+  LaserPointer: {fileID: 1038630312845816537, guid: 49674a99ebe705142b6085ecab6949cf,
+    type: 3}
+  lHandAnchor: {fileID: 2271516315306079325}
 --- !u!1 &3034854545002453706
 GameObject:
   m_ObjectHideFlags: 0

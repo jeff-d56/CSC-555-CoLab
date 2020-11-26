@@ -1590,6 +1590,99 @@ Transform:
   m_Father: {fileID: 1905876219356063589}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1212831454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1212831455}
+  - component: {fileID: 1212831460}
+  - component: {fileID: 1212831459}
+  - component: {fileID: 1212831458}
+  m_Layer: 8
+  m_Name: StartGameCube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1212831455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212831454}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 7.22, z: 11.48}
+  m_LocalScale: {x: 10, y: 10, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 1536622374}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1212831458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212831454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1212831459
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212831454}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1212831460
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212831454}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1391974099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1605,7 +1698,7 @@ PrefabInstance:
     - target: {fileID: 2979411836850402912, guid: e5f51eb5b8f151748ab387b495ce4e2f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2979411836850402913, guid: e5f51eb5b8f151748ab387b495ce4e2f,
         type: 3}
@@ -2058,9 +2151,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536622374}
-  - component: {fileID: 1536622376}
-  - component: {fileID: 1536622375}
   - component: {fileID: 1536622377}
+  - component: {fileID: 1536622376}
   m_Layer: 0
   m_Name: StartGame
   m_TagString: Untagged
@@ -2078,11 +2170,12 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1212831455}
   m_Father: {fileID: 1905876219356063589}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1536622375
+--- !u!114 &1536622376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2091,13 +2184,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536622373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e02f2be357b400408ca959fde8b9e73, type: 3}
+  m_Script: {fileID: 11500000, guid: a8e75e5dc58acc944bfaee182850d5a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGameBox: {fileID: 1536622376}
-  playerID: 0
+  StartGameMenuCube: {fileID: 1212831454}
   spawnPosition: {fileID: 852229997}
-  amountOFFoodToSpawn: 10
   foodList:
   - {fileID: 6493491723698513249, guid: b51a7065fc331fd4c87a751147ddec4b, type: 3}
   - {fileID: 3238862140985392445, guid: 6fac55f44a95fa247ae6416969e5a689, type: 3}
@@ -2106,30 +2197,11 @@ MonoBehaviour:
   - {fileID: 3403734152439973578, guid: d645c57bdef3a9e4e84f28200101e0aa, type: 3}
   - {fileID: 8746880662975027719, guid: 64b4e019e6c292f4994d583ed36f07b9, type: 3}
   - {fileID: 6852315348695808124, guid: e5ed54a0370c76648ad0ec9209699c7f, type: 3}
-  throwGameStarted: 0
-  throwGameEnded: 0
-  testThrowVar: 0
-  throwGameScore: 0
-  throwGameFoodLeft: 10
+  EndGameScreenObject: {fileID: 1391974103}
+  EndGameScreenScoreText: {fileID: 1391974100}
+  EndGameScreenText: {fileID: 1391974102}
   scoreText: {fileID: 1757203650}
   foodLeftText: {fileID: 2017731747}
-  highScore: 0
-  highScoreParentObject: {fileID: 1391974103}
-  highScoreText: {fileID: 1391974102}
-  highScoreValue: {fileID: 1391974100}
---- !u!65 &1536622376
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536622373}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1536622377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2148,8 +2220,7 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 1
-  ObservedComponents:
-  - {fileID: 1536622375}
+  ObservedComponents: []
   viewIdField: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -3369,7 +3440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905876219356063590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.577}
+  m_LocalPosition: {x: 0, y: 0, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2967746043898968347}

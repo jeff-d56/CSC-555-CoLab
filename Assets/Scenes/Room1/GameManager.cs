@@ -12,6 +12,10 @@ namespace Com.FakeCompanyName.FakeGame
     {
         [Tooltip("The prefab to use for representing the player")]
         public GameObject playerPrefab;
+        //public GameObject playerHead;
+        //public GameObject playerLeftHand;
+        //public GameObject playerRightHand;
+
         public GameObject playerPrefabNonVr;
 
         void Start()
@@ -33,17 +37,21 @@ namespace Com.FakeCompanyName.FakeGame
             {
                 if (Launcher.playInVr)
                 {
+                    
+                    
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
                     PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
                     //Instantiate(this.playerPrefab, new Vector3(0f, 5f, 0f), Quaternion.identity);
                     //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HeadPrefab"), Vector3.zero, Quaternion.identity);
+                    
                 }
                 else
                 {
+                    CreateNonVrPlayer();
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                    PhotonNetwork.Instantiate(this.playerPrefabNonVr.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                    //PhotonNetwork.Instantiate(this.playerPrefabNonVr.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
                     //Instantiate(this.playerPrefab, new Vector3(0f, 5f, 0f), Quaternion.identity);
                     //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HeadPrefab"), Vector3.zero, Quaternion.identity);
                 }
@@ -54,6 +62,22 @@ namespace Com.FakeCompanyName.FakeGame
                 Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
             }
             
+        }
+
+        public void CreateVrPlayer()
+        {
+            /*
+            GameObject temp = Instantiate(this.playerRig, new Vector3(0f, 5f, 0f), Quaternion.identity);
+            temp.name = "PlayerRig";
+            PhotonNetwork.Instantiate(this.playerHead.name, this.playerHead.transform.position, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate(this.playerLeftHand.name, this.playerLeftHand.transform.position, this.playerLeftHand.transform.rotation, 0);
+            PhotonNetwork.Instantiate(this.playerRightHand.name, Vector3.zero, this.playerRightHand.transform.rotation, 0);
+            */
+        }
+
+        public void CreateNonVrPlayer()
+        {
+            PhotonNetwork.Instantiate(this.playerPrefabNonVr.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
         }
 
         public override void OnLeftRoom()

@@ -240,6 +240,8 @@
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\PhotonViewParentableObject.cs" />
+    <Compile Include="Assets\Scenes\LaserPointerTest.cs" />
     <Compile Include="Assets\Scenes\Launcher\Launcher.cs" />
     <Compile Include="Assets\Scenes\Launcher\PlayerNameInputField.cs" />
     <Compile Include="Assets\Scenes\Room1\GameManager.cs" />
@@ -248,6 +250,7 @@
     <Compile Include="Assets\Scenes\SyncObjects.cs" />
     <Compile Include="Assets\Scenes\kitchenGame\ThrowFoodGameManager.cs" />
     <Compile Include="Assets\Scenes\kitchenGame\ThrowFoodStartGame.cs" />
+    <Compile Include="Assets\Scenes\kitchenGame\testRPC.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\bullet.cs" />
@@ -257,6 +260,7 @@
     <Compile Include="Assets\Scripts\hoopController.cs" />
     <Compile Include="Assets\Scripts\moveScene.cs" />
     <Compile Include="Assets\Scripts\spawnFood.cs" />
+    <Compile Include="Assets\Scripts\startGameHelper.cs" />
     <Compile Include="Assets\SyncPickedUpItems.cs" />
     <None Include="Assets\Oculus\SampleFramework\Usage\HandsTrainExample\Shaders\XingLightShader.shader" />
     <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />

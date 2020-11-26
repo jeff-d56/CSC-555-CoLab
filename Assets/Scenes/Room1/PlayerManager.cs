@@ -15,6 +15,9 @@ namespace Com.FakeCompanyName.FakeGame
         [SerializeField] private float gravityValue = -9.81f;
         [SerializeField] private GameObject playerHead;
         [SerializeField] private GameObject ovrCameraRig;
+        [SerializeField] private GameObject LaserPointer;
+        [SerializeField] private Transform lHandAnchor;
+
         //[SerializeField] private GameObject controller;
 
         [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
@@ -95,6 +98,7 @@ namespace Com.FakeCompanyName.FakeGame
             if (Launcher.playInVr)
             {
                 ovrCameraRig.gameObject.AddComponent<OVRCameraRig>();
+
                 ovrCameraRig.gameObject.AddComponent<OVRManager>();
                 ovrCameraRig.gameObject.AddComponent<OVRHeadsetEmulator>();
                 this.gameObject.AddComponent<CharacterController>();
@@ -102,6 +106,10 @@ namespace Com.FakeCompanyName.FakeGame
                 this.gameObject.GetComponent<OVRPlayerController>().HmdRotatesY = true;
                 playerHead.GetComponent<Camera>().enabled = true;
                 playerHead.GetComponent<AudioListener>().enabled = true;
+
+                GameObject laser = Instantiate(LaserPointer, Vector3.zero, Quaternion.identity, this.transform);
+                laser.GetComponent<LaserPointerTest>().handAnchor = lHandAnchor;
+
             }
             else
             {

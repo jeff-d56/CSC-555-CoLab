@@ -296,7 +296,6 @@ namespace UnityEngine.Rendering.PostProcessing
             foreach (var volume in volumes)
             {
 
-
                 // Skip disabled volumes and volumes without any data or weight
                 if (!volume.enabled || volume.profileRef == null || volume.weight <= 0f)
                     continue;
@@ -410,6 +409,6 @@ namespace UnityEngine.Rendering.PostProcessing
             }
         }
 
-   
+        
     }
 }

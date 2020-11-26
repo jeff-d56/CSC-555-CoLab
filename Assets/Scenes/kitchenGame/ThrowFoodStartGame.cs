@@ -8,7 +8,7 @@ namespace Com.FakeCompanyName.FakeGame
 {
     public class ThrowFoodStartGame : MonoBehaviourPunCallbacks, IPunObservable
     {
-        [SerializeField] private Collider startGameBox;
+        [SerializeField] private GameObject startGameBox;
         [SerializeField] private int playerID;
         private bool turnOffBox = false;
 
@@ -34,7 +34,7 @@ namespace Com.FakeCompanyName.FakeGame
         public GameObject highScoreParentObject; // Canvas that holds highscore
         public Text highScoreText; // 
         public Text highScoreValue;
-        
+        /*
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player")) // If player hits box in front of throw food game
@@ -50,7 +50,7 @@ namespace Com.FakeCompanyName.FakeGame
                 StartNewThrowGame(playerID);
             }
         }
-
+        */
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) // this will right to network
         {
             if (stream.IsWriting)
@@ -81,9 +81,9 @@ namespace Com.FakeCompanyName.FakeGame
 
         public void SpawnNewFood()
         {
-            PhotonNetwork.Instantiate(this.ChooseFood().name, spawnPosition.position, Quaternion.identity, 0); // this will spawn food for everyone on network
-            /*
-            if (throwGameFoodLeft == 0)
+            //PhotonNetwork.Instantiate(this.ChooseFood().name, spawnPosition.position, Quaternion.identity, 0); // this will spawn food for everyone on network
+            
+            if (throwGameFoodLeft <= 0)
             {
                 throwGameEnded = true;
                 EndThrowGame();
@@ -92,7 +92,7 @@ namespace Com.FakeCompanyName.FakeGame
             {
                 PhotonNetwork.Instantiate(this.ChooseFood().name, spawnPosition.position, Quaternion.identity, 0); // this will spawn food for everyone on network
             }
-            */
+            
         }
 
         public void StartNewThrowGame(int playerID)
@@ -102,9 +102,17 @@ namespace Com.FakeCompanyName.FakeGame
             throwGameFoodLeft = 10;
             foodLeftText.text = throwGameFoodLeft.ToString();
             scoreText.text = throwGameScore.ToString();
+            
+            
+
             SpawnNewFood();
             
             testThrowVar = true;
+        }
+
+        public void testMethod()
+        {
+            DecreaseFoodLeft();
         }
 
         public void EndThrowGame()
@@ -141,9 +149,16 @@ namespace Com.FakeCompanyName.FakeGame
             
         }
 
+        
+
         public void updateGame()
         {
             foodLeftText.text = throwGameFoodLeft.ToString();
+
+            if (throwGameEnded)
+            {
+                EndThrowGame();
+            }
         }
 
         public void Update()
@@ -151,11 +166,11 @@ namespace Com.FakeCompanyName.FakeGame
             foodLeftText.text = throwGameFoodLeft.ToString(); // probably dont put this here
             if (turnOffBox)
             {
-                startGameBox.enabled = false;
+                startGameBox.SetActive(false);
             }
             else
             {
-                startGameBox.enabled = true;
+                startGameBox.SetActive(true);
             }
 
             if (throwGameEnded)

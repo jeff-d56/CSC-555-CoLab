@@ -8,10 +8,16 @@ namespace Com.FakeCompanyName.FakeGame
     public class SyncFoodManager : MonoBehaviourPunCallbacks, IPunObservable
     {
 
-        private ThrowFoodStartGame TFSG;
+        private testRPC TFSG;
         private Vector3 latestPos;
         bool valuesReceived = false;
 
+        private void Start()
+        {
+            TFSG = GameObject.FindObjectOfType<testRPC>();
+        }
+
+        // Track objects location
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) // this will right to network
         {
             if (stream.IsWriting)
@@ -25,6 +31,7 @@ namespace Com.FakeCompanyName.FakeGame
             }
         }
 
+        // Apply objects location
         private void Update()
         {
             if (!photonView.IsMine && valuesReceived)
@@ -35,27 +42,25 @@ namespace Com.FakeCompanyName.FakeGame
             }
         }
 
-        private void Start()
-        {
-            TFSG = GameObject.FindObjectOfType<ThrowFoodStartGame>();
-        }
+        // If food hits ground and is yours
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "Floor")
+            if (collision.gameObject.tag == "Floor" && photonView.IsMine)
             {
-                ThrowFoodStartGame.DecreaseFoodLeft();
-                TFSG.SpawnNewFood();
+                //ThrowFoodStartGame.DecreaseFoodLeft();
+                //TFSG.SpawnNewFood();
+                TFSG.FoodHitGround();
                 PhotonNetwork.Destroy(this.gameObject);
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Target")
+            if (other.gameObject.tag == "Target" && photonView.IsMine)
             {
-                ThrowFoodStartGame.IncreaseScore(other.gameObject.GetComponent<hoopController>().scoreMultiplyer);
-                ThrowFoodStartGame.DecreaseFoodLeft();
-                TFSG.SpawnNewFood();
+                //ThrowFoodStartGame.IncreaseScore(other.gameObject.GetComponent<hoopController>().scoreMultiplyer);
+                //ThrowFoodStartGame.DecreaseFoodLeft();
+                TFSG.FoodHitTarget(other.gameObject.GetComponent<hoopController>().scoreMultiplyer);
                 PhotonNetwork.Destroy(this.gameObject);
             }
             else if (other.CompareTag("Hand"))
