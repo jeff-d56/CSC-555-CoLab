@@ -2,66 +2,101 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class GameController : MonoBehaviour
+namespace Com.FakeCompanyName.FakeGame
 {
-
-    //List<int> highScore;
-   
-    public bool gameOver;
-
-    public int highScore;
-    public GameObject highScoreParent;
-    public Text highScoreText;
-    public Text highScoreValue;
-
-    //private ScoreManager scoreManager;
-
-    // Start is called before the first frame update
-    void Start()
+    public class GameController : MonoBehaviour
     {
-        //highScore = new List<int>(); // create new list
-        highScore = 0;
-        gameOver = false;
-        //scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
-    }
-    public void StartGame()
-    {
-        //scoreManager.score = 0; // set score
-        //scoreManager.setScore(0); // set score text
-        score = 0;
-        scoreText.text = score.ToString();
-        highScoreParent.SetActive(false); // set high score to be unactive
-        gameOver = false;
-    }
+        //List<int> highScore
 
-    public void EndGame()
-    {
-        gameOver = true; // set game over to true
+        public static PhotonView ShGMPV;
+        public bool gameOver;
 
-        if (highScore > score)
+        public int highScore;
+        public GameObject highScoreParent;
+        public Text highScoreText;
+        public Text highScoreValue;
+
+
+        //private ScoreManager scoreManager;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            highScoreText.text = "High Score";
-            highScoreValue.text = highScore.ToString();
+            ShGMPV = this.GetComponent<PhotonView>();
+            //highScore = new List<int>(); // create new list
+            highScore = 0;
+            gameOver = false;
+            StartGameHelper();
+            //scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+
         }
-        else
+
+        public void StartGameHelper()
         {
-            highScore = score;
-            highScoreText.text = "New High Score";
-            highScoreValue.text = highScore.ToString();
+            if (PhotonNetwork.MasterClient == PhotonNetwork.LocalPlayer) // If water gun is not enabled and user is masterclient
+            {
+                ShGMPV.RPC("StartGame", RpcTarget.AllBuffered);
+                
+            }
         }
-        highScoreParent.SetActive(true);
+
+        [PunRPC]
+        public void StartGame()
+        {
+            //scoreManager.score = 0; // set score
+            //scoreManager.setScore(0); // set score text
+            score = 0;
+            scoreText.text = score.ToString();
+            highScoreParent.SetActive(false); // set high score to be unactive
+            gameOver = false;
+        }
+
+        public static void EndGameHelper(int targetWinner)
+        {
+            ShGMPV.RPC("EndGame", RpcTarget.AllBuffered, targetWinner);
+        }
+
+        [PunRPC]
+        public void EndGame(int targetWinner)
+        {
+            gameOver = true; // set game over to true
+
+            if (highScore > score)
+            {
+                highScoreText.text = "High Score";
+                highScoreValue.text = highScore.ToString();
+            }
+            else
+            {
+                highScore = score;
+                highScoreText.text = "New High Score";
+                highScoreValue.text = highScore.ToString();
+            }
+            highScoreParent.SetActive(true);
+            SetWinner(targetWinner);
+            Debug.LogError("Game has ended");
+        }
+
+
+        public int score = 0;
+        public Text scoreText;
+
+        public void AddToScore(int mulitplyer)
+        {
+            score = score + mulitplyer;
+            scoreText.text = score.ToString();
+        }
+
+        public void SetWinner(int targetNumber)
+        {
+            // Set targetNumber as winner
+            targetNumberText[targetNumber - 1].text = "W";
+
+            Debug.LogError("Winner is " + targetNumber);
+        }
+
     }
-
-
-    public int score = 0;
-    public Text scoreText;
-
-    public void AddToScore(int mulitplyer)
-    {
-        score = score + mulitplyer;
-        scoreText.text = score.ToString();
-    }
-
 }

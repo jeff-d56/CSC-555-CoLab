@@ -8,25 +8,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Launcher/Launcher.unity
     guid: d1854df83fa189b44a0a679d10829197
-  - enabled: 1
-    path: Assets/Scenes/Room1/Room for 1.unity
+  - enabled: 0
+    path: Assets/Scenes/Managers/Room for 1.unity
     guid: e9e870acf36a203439cda69fe41a6804
-  - enabled: 1
-    path: Assets/Scenes/Room1/Room for 2.unity
+  - enabled: 0
+    path: Assets/Scenes/Managers/Room for 2.unity
     guid: d8f1e9faa6c28934e88a66352191c5a4
-  - enabled: 1
-    path: Assets/Scenes/Room1/Room for 3.unity
+  - enabled: 0
+    path: Assets/Scenes/Managers/Room for 3.unity
     guid: 3bb1d7d445b210241bb2ce5ace234e5a
-  - enabled: 1
-    path: Assets/Scenes/Room1/Room for 4.unity
+  - enabled: 0
+    path: Assets/Scenes/Managers/Room for 4.unity
     guid: 487ed667d4f7da54a879419fe3ab4906
   - enabled: 0
-    path: Assets/Scenes/kitchenGame/SampleScene.unity
+    path: Assets/Scenes/kitchenGame/ShootingGameAndrew.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/kitchenGame/throwFood.unity
+    path: Assets/Scenes/throwFood/throwFood.unity
     guid: 7f3287f762789a54f9c0f4a54ea3bef5
   - enabled: 0
-    path: Assets/Scenes/kitchenGame/SampleScene 1.unity
+    path: Assets/Scenes/kitchenGame/KitchenScene.unity
     guid: d73f37f7e134c3847acaa52d5240eea1
+  - enabled: 1
+    path: Assets/Scenes/SquritGunGame/MultiplayerGame.unity
+    guid: 8186429e44afbf2429a1959386145555
   m_configObjects: {}

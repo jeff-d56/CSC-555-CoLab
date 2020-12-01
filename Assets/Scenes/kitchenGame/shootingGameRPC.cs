@@ -6,138 +6,114 @@ using UnityEngine.UI;
 
 namespace Com.FakeCompanyName.FakeGame
 {
-    // when first player joins the gamemanagers photonview will default to them
-    // so only send RPC if photonview is yours.
-
-
     public class shootingGameRPC : MonoBehaviour
     {
-        private PhotonView PV;
-        [SerializeField] private GameObject StartGameMenuCube; // Shoot this to start game
-        [SerializeField] private Transform spawnPosition; // This is where food is spawned
-        [SerializeField] private List<GameObject> foodList; // List that holds fold objects
+        public List<SquritGunTarget> Targets;
+        public List<SquritGun> squritGuns;
+        public List<Text> targetNumberText;
+        public static PhotonView SGMPV;
 
-        [SerializeField] private GameObject EndGameScreenObject; // Displays when Game is over
-        [SerializeField] private Text EndGameScreenScoreText;
-        [SerializeField] private Text EndGameScreenText;
+        public GameObject gameMenu;
 
-        private int score;
-        private int highScore;
-        private bool gameStarted = false;
+        public GameObject targetHolder;
+        public Transform targetTextHolder;
+        public Transform squritGunHolder;
 
+        public bool isGameRunning;
 
-        [SerializeField] private Text scoreText;
-
-        void Start()
+        private void Start()
         {
-            Debug.Log("what");
-            PV = this.GetComponent<PhotonView>();
-            score = 69;
-            UpdateUI();
+            SGMPV = this.GetComponent<PhotonView>();
+            foreach (Transform child in targetHolder.transform)
+            {
+                Targets.Add(child.GetComponent<SquritGunTarget>());
+            }
+
+            foreach (Transform child in squritGunHolder)
+            {
+                squritGuns.Add(child.GetComponent<SquritGun>());
+            }
+
+            foreach (Transform child in targetTextHolder.transform)
+            {
+                targetNumberText.Add(child.GetComponent<Text>());
+            }
         }
 
-        public void playerStartedGame()
+        public void StartGameHelper()
         {
-            Debug.LogError("from laser " + PV.IsMine);
-            if (gameStarted == false)
+            if (!isGameRunning && PhotonNetwork.MasterClient == PhotonNetwork.LocalPlayer) // If water gun is not enabled and user is masterclient
             {
-                if (PV.IsMine)
+                SGMPV.RPC("StartGame", RpcTarget.AllBuffered);
+                //SquritGameManager.StartGameHelper(); // Start game
+            }
+            //SGMPV.RPC("StartGame", RpcTarget.AllBuffered);
+        }
+
+        [PunRPC]
+        public void StartGame()
+        {
+            if (!isGameRunning)
+            {
+                gameMenu.SetActive(false);
+                foreach (SquritGunTarget target in Targets)
                 {
-                    PV.RPC("StartNewGame", RpcTarget.AllBuffered);
+                    target.ResetFillGauge();
                 }
-                else if (!PV.IsMine) // If the view on the box is not theirs.
+
+                // go through all squritguns and enable them
+                foreach (SquritGun gun in squritGuns)
                 {
-                    Debug.LogError("view not mine " + PV.IsMine);
-                    PV.TransferOwnership(PhotonNetwork.LocalPlayer); // make the view on the box theirs.
-                    Debug.LogError("view should be mine  " + PV.IsMine);
-                    PV.RPC("StartNewGame", RpcTarget.AllBuffered);
+                    gun.isEnabled = true;
                 }
+
+                for (int i = 0; i < 9; i++)
+                {
+                    targetNumberText[i].text = (i + 1).ToString();
+                }
+                isGameRunning = true;
+                Debug.LogError("Game has Started");
+
+            }
+        }
+
+        public static void EndGameHelper(int targetWinner)
+        {
+            SGMPV.RPC("EndGame", RpcTarget.AllBuffered, targetWinner);
+        }
+
+        [PunRPC]
+        public void EndGame(int targetWinner)
+        {
+            if (isGameRunning)
+            {
+                foreach (SquritGun gun in squritGuns)
+                {
+                    gun.isEnabled = false;
+                }
+
+
+                foreach (SquritGunTarget target in Targets)
+                {
+                    target.waterGunIsHiting = false;
+                }
+
+
+                isGameRunning = false;
+                SetWinner(targetWinner);
+                Debug.LogError("Game has ended");
+                gameMenu.SetActive(true);
             }
         }
 
 
-
-        [PunRPC]
-        public void testDecreasFood()
+        public void SetWinner(int targetNumber)
         {
-            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.position = new Vector3(0, 0.5f, 0);
+            // Set targetNumber as winner
+            targetNumberText[targetNumber - 1].text = "W";
+
+            Debug.LogError("Winner is " + targetNumber);
         }
-
-        [PunRPC]
-        public void StartNewGame()
-        {
-            Debug.LogError(PV.IsMine);
-            StartGameMenuCube.SetActive(false);
-            EndGameScreenObject.SetActive(false);
-            Debug.LogError(gameStarted);
-            gameStarted = true;
-            Debug.LogError(gameStarted);
-
-            score = 0;
-            UpdateUI();
-        }
-
-        [PunRPC]
-        public void EndGame()
-        {
-
-            if (highScore > score)
-            {
-                EndGameScreenText.text = "Game Over High Score";
-                EndGameScreenScoreText.text = highScore.ToString();
-            }
-            else
-            {
-                highScore = score;
-                EndGameScreenText.text = "Game Over New High Score";
-                EndGameScreenScoreText.text = highScore.ToString();
-            }
-
-            gameStarted = false;
-            EndGameScreenObject.SetActive(true);
-            StartGameMenuCube.SetActive(true);
-        }
-
-        public void FoodHitTarget(int multi)
-        {
-            PV.RPC("FoodHitTargetUpdate", RpcTarget.AllBuffered, multi);
-        }
-
-        [PunRPC]
-        public void FoodHitTargetUpdate(int multiplyer)
-        {
-            score += 1 * multiplyer;
-            UpdateUI();
-        }
-        /*
-        public void SpawnNewFood()
-        {
-            Debug.LogError("Called This");
-            Debug.LogError(PV.IsMine);
-            if (PV.IsMine) // Only spawn food if you own the game
-            {
-                Debug.LogError("What is this " + foodRemaining);
-                if (foodRemaining <= 0)
-                {
-                    PV.RPC("EndGame", RpcTarget.AllBuffered);
-                }
-                else
-                {
-                    Debug.LogError("What the fuck " + foodRemaining);
-                    PhotonNetwork.Instantiate(this.ChooseFood().name, spawnPosition.position, Quaternion.identity, 0);
-                }
-            }
-
-
-        }
-        */
-
-        private void UpdateUI()
-        {
-            scoreText.text = score.ToString();
-        }
-
 
     }
 }
