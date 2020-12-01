@@ -6,7 +6,9 @@ namespace UnityEditor.Experimental.Rendering
 {
     static class PostProcessShaderIncludePath
     {
-
+#if UNITY_2018_1_OR_NEWER
+        [ShaderIncludePath]
+#endif
         public static string[] GetPaths()
         {
             var srpMarker = Directory.GetFiles(Application.dataPath, "POSTFXMARKER", SearchOption.AllDirectories).FirstOrDefault();

@@ -295,6 +295,11 @@ namespace UnityEngine.Rendering.PostProcessing
             // Traverse all volumes
             foreach (var volume in volumes)
             {
+#if UNITY_EDITOR
+                // Skip volumes that aren't in the scene currently displayed in the scene view
+                if (!IsVolumeRenderedByCamera(volume, camera))
+                    continue;
+#endif
 
                 // Skip disabled volumes and volumes without any data or weight
                 if (!volume.enabled || volume.profileRef == null || volume.weight <= 0f)
@@ -409,6 +414,18 @@ namespace UnityEngine.Rendering.PostProcessing
             }
         }
 
-        
+        static bool IsVolumeRenderedByCamera(PostProcessVolume volume, Camera camera)
+        {
+#if UNITY_2018_3_OR_NEWER && UNITY_EDITOR
+            // If the current camera have a custom scene then the camera is rendering that scene,
+            // otherwise the camera is rendering the scenes in the SceneManager.
+            var customScene = camera.scene;
+            return customScene.IsValid()
+                ? UnityEditor.SceneManagement.EditorSceneManager.IsGameObjectInScene(volume.gameObject, customScene)
+                : UnityEditor.SceneManagement.EditorSceneManager.IsGameObjectInMainScenes(volume.gameObject);
+#else
+            return true;
+#endif
+        }
     }
 }
