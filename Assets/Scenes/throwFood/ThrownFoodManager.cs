@@ -22,7 +22,7 @@ namespace Com.FakeCompanyName.FakeGame
         {
             if (other.gameObject.CompareTag("Hand"))
             {
-                if (GameObject.ReferenceEquals(PlayerManager.LocalPlayerInstance.transform, this.gameObject.transform.root) && !foodsPV.IsMine)
+                if (!foodsPV.IsMine)
                 {
                     Debug.Log(PhotonNetwork.LocalPlayer.NickName);
                     foodsPV.TransferOwnership(PhotonNetwork.LocalPlayer);

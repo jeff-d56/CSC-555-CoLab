@@ -127,6 +127,7 @@ MonoBehaviour:
   scoreMultiplyer: 1
   explosion: {fileID: 8757084818065367164, guid: 16a44c0fd993fba4192c6b0387b21949,
     type: 3}
+  targetPV: {fileID: 1309732804979466733}
 --- !u!114 &1309732804979466733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +144,8 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   observableSearch: 2
-  Synchronization: 3
-  OwnershipTransfer: 0
+  Synchronization: 1
+  OwnershipTransfer: 1
   ObservedComponents: []
   viewIdField: 0
   InstantiationId: 0

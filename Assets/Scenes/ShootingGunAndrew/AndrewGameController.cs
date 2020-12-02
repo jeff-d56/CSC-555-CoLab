@@ -17,6 +17,7 @@ namespace Com.FakeCompanyName.FakeGame
         
         public GameObject gameMenu;
         public GameObject target;
+        public GameObject explosion;
 
         public AndrewGunController leftBannaGun;
         public AndrewGunController rightBannaGun;
@@ -55,6 +56,7 @@ namespace Com.FakeCompanyName.FakeGame
             {
                 ShGMPV.RPC("StartGameRPC", RpcTarget.AllBuffered);
             }
+            ShGMPV.RPC("StartGameRPC", RpcTarget.AllBuffered);
         }
 
         [PunRPC]
@@ -173,12 +175,27 @@ namespace Com.FakeCompanyName.FakeGame
         }
 
 
-
-        public void SpawnTarget()
+        public void SpawnTarget(Vector3 targetLocation, int bannaGunOwner)
         {
-            PhotonNetwork.Instantiate(this.target.name, new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(1, 4), Random.Range(4, 20)), Quaternion.identity);
+            ShGMPV.RPC("SpawnTargetRPC", RpcTarget.AllBuffered, targetLocation, bannaGunOwner);
         }
 
+        [PunRPC]
+        public void SpawnTargetRPC(Vector3 targetLocation, int bannaGunOwner)
+        {
+            Debug.Log("Spawned");
+            if (PhotonNetwork.MasterClient == PhotonNetwork.LocalPlayer)
+            {
+                
+                PhotonNetwork.Instantiate(this.target.name, new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(1, 4), Random.Range(4, 20)), Quaternion.identity);
+                //PhotonNetwork.Instantiate(this.explosion.name, targetLocation, Quaternion.identity);
+                
+                SetScore(bannaGunOwner);
+                Debug.LogError("Spawned Target");
+            }
+            Instantiate(explosion, targetLocation, Quaternion.identity);
+
+        }
 
 
 

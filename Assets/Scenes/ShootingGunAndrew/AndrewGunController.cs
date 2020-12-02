@@ -58,6 +58,7 @@ namespace Com.FakeCompanyName.FakeGame
         {
             if (other.gameObject.CompareTag("Hand"))
             {
+                Debug.Log(GameObject.ReferenceEquals(PlayerManager.LocalPlayerInstance.transform, this.gameObject.transform.root) && !bananaGunPV.IsMine);
                 if (GameObject.ReferenceEquals(PlayerManager.LocalPlayerInstance.transform, this.gameObject.transform.root) && !bananaGunPV.IsMine)
                 {
                     Debug.Log(PhotonNetwork.LocalPlayer.NickName);

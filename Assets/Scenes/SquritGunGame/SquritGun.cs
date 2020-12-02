@@ -92,7 +92,7 @@ namespace Com.FakeCompanyName.FakeGame
 
         private void Update()
         {
-            if (isEnabled && playerIsAttached) // If water gun is enabled
+            if (isEnabled && playerIsAttached && squritGunPV.IsMine) // If water gun is enabled
             {
                 if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger)) // If user pressed button to fire water gun
                 {

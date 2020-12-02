@@ -539,6 +539,16 @@ PrefabInstance:
       propertyPath: viewIdField
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1309732804979466733, guid: 0d1f56afee42fe144b43cd606d67db3a,
+        type: 3}
+      propertyPath: OwnershipTransfer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309732804979466733, guid: 0d1f56afee42fe144b43cd606d67db3a,
+        type: 3}
+      propertyPath: Synchronization
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5346373546614628177, guid: 0d1f56afee42fe144b43cd606d67db3a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1154,7 +1164,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   observableSearch: 2
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 756082328}
@@ -1349,6 +1359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMenu: {fileID: 364288952}
   target: {fileID: 5346373546614628181, guid: 0d1f56afee42fe144b43cd606d67db3a, type: 3}
+  explosion: {fileID: 8757084818065367164, guid: 16a44c0fd993fba4192c6b0387b21949,
+    type: 3}
   leftBannaGun: {fileID: 1957105781337453674}
   rightBannaGun: {fileID: 756082327}
   leftPlayerScoreText: {fileID: 986570389393481202}
@@ -1685,6 +1697,16 @@ PrefabInstance:
         type: 3}
       propertyPath: viewIdField
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309732804979466733, guid: 0d1f56afee42fe144b43cd606d67db3a,
+        type: 3}
+      propertyPath: OwnershipTransfer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309732804979466733, guid: 0d1f56afee42fe144b43cd606d67db3a,
+        type: 3}
+      propertyPath: Synchronization
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5346373546614628177, guid: 0d1f56afee42fe144b43cd606d67db3a,
         type: 3}
@@ -2687,7 +2709,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   observableSearch: 2
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 1957105781337453678}
@@ -2848,6 +2870,16 @@ PrefabInstance:
         type: 3}
       propertyPath: viewIdField
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309732804979466733, guid: 0d1f56afee42fe144b43cd606d67db3a,
+        type: 3}
+      propertyPath: OwnershipTransfer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309732804979466733, guid: 0d1f56afee42fe144b43cd606d67db3a,
+        type: 3}
+      propertyPath: Synchronization
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5346373546614628177, guid: 0d1f56afee42fe144b43cd606d67db3a,
         type: 3}
