@@ -1062,7 +1062,6 @@ MonoBehaviour:
     type: 3}
   lHandAnchor: {fileID: 2271516315306079325}
   playerNameText: {fileID: 8017540072586294371}
-  Menu: {fileID: 0}
 --- !u!1 &3034854545002453706
 GameObject:
   m_ObjectHideFlags: 0

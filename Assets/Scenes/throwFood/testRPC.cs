@@ -146,7 +146,6 @@ namespace Com.FakeCompanyName.FakeGame
                 }
                 else
                 {
-                    Debug.LogError("What the fuck " + foodRemaining);
                     PhotonNetwork.Instantiate(this.ChooseFood().name, spawnPosition.position, Quaternion.identity, 0);
                 }
             }

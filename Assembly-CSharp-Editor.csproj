@@ -714,6 +714,10 @@
       <Project>{D86CB0F5-5B1B-7727-B123-064CA57F58BE}</Project>
       <Name>PunDemos.DemoSlotcarEditor</Name>
     </ProjectReference>
+    <ProjectReference Include="PhotonVoice.API.csproj">
+      <Project>{4E4E7F30-58EC-60A2-835B-DFB0DD42FC80}</Project>
+      <Name>PhotonVoice.API</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
       <Project>{CC8C7BA9-F125-CE12-E8AE-57A1AD4FA824}</Project>
       <Name>PhotonUnityNetworking.Demos</Name>
@@ -721,6 +725,14 @@
     <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
       <Project>{DB348609-C35E-D293-5B43-5D7DED12633B}</Project>
       <Name>PhotonUnityNetworking.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonVoice.Editor.csproj">
+      <Project>{6A999888-B467-F02E-4A47-182360B740F6}</Project>
+      <Name>PhotonVoice.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonVoice.PUN.csproj">
+      <Project>{2F3CE3BE-995B-3175-2C87-C5ED35783681}</Project>
+      <Name>PhotonVoice.PUN</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonRealtime.csproj">
       <Project>{284E7F4B-0932-CEC5-19E9-DB102687BF7E}</Project>
@@ -738,6 +750,10 @@
       <Project>{F92D5587-2D77-E37D-855E-EBE3E1EC6735}</Project>
       <Name>Oculus.VR.Scripts.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="PhotonVoice.csproj">
+      <Project>{AEE7B63A-DDA9-1A5F-111B-36A073387B3B}</Project>
+      <Name>PhotonVoice</Name>
+    </ProjectReference>
     <ProjectReference Include="Oculus.VR.csproj">
       <Project>{77BED899-1D88-A385-53D0-7AA4E7E21E1D}</Project>
       <Name>Oculus.VR</Name>
@@ -750,6 +766,10 @@
       <Project>{3AC65439-CBAA-2BF6-E9AA-9BA7415AC26F}</Project>
       <Name>Oculus.Platform</Name>
     </ProjectReference>
+    <ProjectReference Include="PhotonVoice.Utilities.Editor.csproj">
+      <Project>{2867A22C-C58F-A19A-8110-1962C83E4161}</Project>
+      <Name>PhotonVoice.Utilities.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
       <Project>{B7A30F0A-C840-D1A8-36F3-CA6D78DD633F}</Project>
       <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
@@ -757,26 +777,6 @@
     <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
       <Project>{1A6C2A51-7D45-7B08-BB04-D082347E196F}</Project>
       <Name>PhotonUnityNetworking.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonVoice.API.csproj">
-      <Project>{4E4E7F30-58EC-60A2-835B-DFB0DD42FC80}</Project>
-      <Name>PhotonVoice.API</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonVoice.Editor.csproj">
-      <Project>{6A999888-B467-F02E-4A47-182360B740F6}</Project>
-      <Name>PhotonVoice.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonVoice.PUN.csproj">
-      <Project>{2F3CE3BE-995B-3175-2C87-C5ED35783681}</Project>
-      <Name>PhotonVoice.PUN</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonVoice.csproj">
-      <Project>{AEE7B63A-DDA9-1A5F-111B-36A073387B3B}</Project>
-      <Name>PhotonVoice</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonVoice.Utilities.Editor.csproj">
-      <Project>{2867A22C-C58F-A19A-8110-1962C83E4161}</Project>
-      <Name>PhotonVoice.Utilities.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonVoice.PUN.Editor.csproj">
       <Project>{4CE837BD-4380-4BB4-53D4-866FF6C3D4A3}</Project>

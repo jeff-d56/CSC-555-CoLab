@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 3403734152439973577}
   - component: {fileID: 7076744481380640539}
   - component: {fileID: 1702143442755905426}
-  - component: {fileID: -8435279531681145381}
+  - component: {fileID: -9015310678404869140}
+  - component: {fileID: 2894575474305445741}
   m_Layer: 0
   m_Name: Hotdog
   m_TagString: food
@@ -154,7 +155,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-8435279531681145381
+--- !u!114 &-9015310678404869140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,6 +164,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3403734152439973578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a283bffc4bb8447a2a197fb07c620d, type: 3}
+  m_Script: {fileID: 11500000, guid: e44d17af36e68c54cae879b1316fd3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2894575474305445741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3403734152439973578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0

@@ -79,7 +79,6 @@ namespace Com.FakeCompanyName.FakeGame
                 laserLineRenderer.material.color = Color.green;
                 endPosition = hit.point;
 
-                Debug.Log(hit.transform.gameObject.layer == 8);
                 if (hit.transform.gameObject.layer == 8) // Set player can teleport
                 {
                     teleportLocation = hit.point;

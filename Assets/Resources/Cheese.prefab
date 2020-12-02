@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 3238862140985392450}
   - component: {fileID: -522635800507128396}
   - component: {fileID: -3581647032871232797}
-  - component: {fileID: 517789700259699056}
+  - component: {fileID: 1756514663171071062}
+  - component: {fileID: -2837576586190715150}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: food
@@ -150,12 +151,11 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 517789700259699056}
+  ObservedComponents: []
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &517789700259699056
+--- !u!114 &1756514663171071062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,6 +164,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3238862140985392445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a283bffc4bb8447a2a197fb07c620d, type: 3}
+  m_Script: {fileID: 11500000, guid: e44d17af36e68c54cae879b1316fd3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2837576586190715150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238862140985392445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0

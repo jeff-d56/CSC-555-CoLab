@@ -23,6 +23,8 @@ namespace Com.FakeCompanyName.FakeGame
 
         public static bool playInVr;
 
+        private string sceneName;
+
         /// <summary>
         /// Keep track of the current process. Since connection is asynchronous and is based on several callbacks from Photon,
         /// we need to keep track of this to properly adjust the behavior when we receive call back by Photon.
@@ -77,6 +79,11 @@ namespace Com.FakeCompanyName.FakeGame
             Connect();
         }
 
+        public void connectToRoom(string sceneNameFromButton)
+        {
+            sceneName = sceneNameFromButton;
+            ConnectInVr();
+        }
 
         #region MonoBehaviourPunCallbacks Callbacks
 
@@ -130,7 +137,7 @@ namespace Com.FakeCompanyName.FakeGame
 
                 // #Critical
                 // Load the Room Level.
-                PhotonNetwork.LoadLevel("MultiplayerGame");
+                PhotonNetwork.LoadLevel(sceneName);
             }
         }
     }
